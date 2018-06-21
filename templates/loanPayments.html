@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Change password{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">{{object2.username}}, please deposit the amount you wish to payBill <br/>
+    number 0011234.Your account number is {{object2.loanNumber}}.<br/><br/>
+     then enter the Mpesa confirmation PIN you get here</li>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-success">send confirmation PIN</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

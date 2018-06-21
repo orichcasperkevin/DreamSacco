@@ -1,0 +1,517 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        {% load staticfiles %}
+				{% load widget_tweaks %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Dream Sacco</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="GetTemplates.co" />
+
+
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,70" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'sacco/css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'sacco/css/icomoon.css' %}">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="{% static 'sacco/css/themify-icons.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'sacco/css/bootstrap.css' %}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'sacco/css/magnific-popup.css' %}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'sacco/css/bootstrap-datepicker.min.css' %}">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{% static 'sacco/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'sacco/css/owl.theme.default.min.css' %}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'sacco/css/style.css' %}">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'sacco/js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'music/js/respond.min.js' %}"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+	<div class="gtco-loader"></div>
+
+	<div id="page">
+
+
+	<!-- <div class="page-inner"> -->
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo"><a href="index.html"> Dream Sacco <em>.</em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+							<li class="has-dropdown">
+							<a href="#">Save</a>
+							<ul class="dropdown">
+								<li><a href="#">Main Saving </a></li>
+								<li><a href="#">Education Saving</a></li>
+								<li><a href="#">Retirement Saving </a></li>
+								<li><a href="#">Fixed Deposit </a></li>
+							</ul>
+						</li>
+                        <li class="has-dropdown">
+							<a href="#">Borrow</a>
+							<ul class="dropdown">
+								<li><a href="#">Normal Loan </a></li>
+								<li><a href="#">Emergency Loan</a></li>
+								<li><a href="#">School Fees Loan </a></li>
+
+							</ul>
+						</li>
+
+						<li><a href="{% url 'register' %}">Sign Up</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_2.jpg)">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-left">
+
+
+					<div class="row row-mt-15em">
+						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h1> making your dreams happen, one shilling at a time </h1>
+						</div>
+						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+							<div class="form-wrap">
+								<div class="tab">
+
+									<div class="tab-content">
+										<div class="tab-content-inner active" data-content="signup">
+											<h3>log in here</h3>
+
+
+											<form  id= "registerForm" method="post">
+
+
+                        {% csrf_token %}
+												{% for field in form %}
+												<div class="form-group">
+                          {{ field.label_tag }}
+													{% if form.is_bound %}
+                      {% if field.errors %}
+
+{% render_field field class="form-control is-invalid" %}
+{% for error in field.errors %}
+<div class="invalid-feedback">
+{{ error }}
+</div>
+{% endfor %}
+
+{% else %}
+{% render_field field class="form-control is-valid" %}
+{% endif %}
+{% else %}
+{% render_field field class="form-control" %}
+{% endif %}
+
+{% if field.help_text %}
+<small class="form-text text-muted">
+{{ field.help_text }}
+</small>
+{% endif %}
+</div>
+{% endfor %}
+												</div>
+
+												<div class="row form-group">
+													<div class="col-md-12">
+														<input type="submit" class="btn btn-primary btn-block" value="log in">
+													</div>
+												</div>
+													<small class="block">Not a member ?? <a href="{% url 'register' %}" target="_blank">REGISTER HERE</a></small>
+
+
+																							</form>
+																							<div class="text-center py-2">
+																					 <small>
+																						<a href="{% url 'password_reset' %}" target="_blank"  class="text-muted">Forgot your password?</a>
+																						</small>
+																				 </div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="gtco-section">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Available products</h2>
+					<p> Dream Sacco is dedicated to bringing you the most affordable products, letting your money work for you</p>
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_1.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Fixed Deposit Account</h2>
+							<p>With the Dream sacco Fixed Deposit, you can maximise the growth potential of your savings, without taking any risks. </p>
+
+
+						</div>
+					</a>
+
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_2.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_2.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>education savings account</h2>
+							<p>secure the future of your kids with this product from us. with high growth rates, this product can guarantee educatio fees for your loved ones</p>
+
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_3.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_3.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>main savings account</h2>
+							<p>make savings for about anything you want. This savings account will also give you better chances at getting quick loans and more.it doesnt get any better</p>
+
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_4.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_4.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>quick loans</h2>
+							<p>get short loans of up to 10000 shillings with no limit to the number of loans you currently have </p>
+
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_5.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_5.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Emergency loans </h2>
+							<p>stuck in a situation ??Let dream sacco rescue you with our emergency loan. with less than five minutes time to process the request! </p>
+
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="images/img_6.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/img_6.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>long Term Loans</h2>
+							<p>get long term loans at affordable rates to grow yourself.</p>
+
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="gtco-features">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+					<h2>How Dream sacco Works</h2>
+					<p>Dont be left out.Join Dream Sacco and enjoy our exclusive products.here is how</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>1</i>
+						</span>
+						<h3>Register to the online services</h3>
+						<p>with only a username, an email and a password,have yourself registered to the online services</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>2</i>
+						</span>
+						<h3>Log in</h3>
+						<p>with your password and username, log into your online dash board</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>3</i>
+						</span>
+						<h3>create Account</h3>
+						<p>create an account of your choice with dream sacco. the account needs not have any money in it!s</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>4</i>
+						</span>
+						<h3>start loaning</h3>
+						<p>with an account created, you can now have access to our loan services and more. Enjoy.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>4</i>
+						</span>
+						<h3>enjoy dream sacco</h3>
+						<p>visit the dream sacco for new product updates,log into your account for statements.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="gtco-cover gtco-cover-sm" style="background-image: url(images/img_bg_1.jpg)"  data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="gtco-container text-center">
+			<div class="display-t">
+				<div class="display-tc">
+					<h1>We have high quality services that you will surely love!</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="gtco-counter" class="gtco-section">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+					<h2>Our Success</h2>
+					<p>here are some of our success stories</p>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
+					<div class="feature-center">
+						<span class="counter js-counter" data-from="0" data-to="196" data-speed="5000" data-refresh-interval="50">1</span>
+						<span class="counter-label">CONSTRUCTION</span>
+
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
+					<div class="feature-center">
+						<span class="counter js-counter" data-from="0" data-to="97" data-speed="5000" data-refresh-interval="50">1</span>
+						<span class="counter-label">TRANSPORT</span>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
+					<div class="feature-center">
+						<span class="counter js-counter" data-from="0" data-to="12402" data-speed="5000" data-refresh-interval="50">1</span>
+						<span class="counter-label">AGRICULTURE</span>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
+					<div class="feature-center">
+						<span class="counter js-counter" data-from="0" data-to="12202" data-speed="5000" data-refresh-interval="50">1</span>
+						<span class="counter-label">HAPPY CUSTOMERS</span>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="gtco-subscribe">
+		<div class="gtco-container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Subscribe</h2>
+					<p>Be the first to know about the new templates.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="gtco-container">
+			<div class="row row-p	b-md">
+
+				<div class="col-md-4">
+					<div class="gtco-widget">
+						<h3>About Us</h3>
+						<p>Dream sacco is an upcoming online sacco that seeks to bring all the sacco activities closer to everyone.</p>
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Offices</h3>
+						<ul class="gtco-footer-links">
+							<li><a href="#">Nairobi</a></li>
+							<li><a href="#">Nakuru</a></li>
+							<li><a href="#">Naivasha</a></li>
+							<li><a href="#">Eldoret</a></li>
+							<li><a href="#">Mombasa</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>People</h3>
+						<ul class="gtco-footer-links">
+							<li><a href="#">casper Orich</a></li>
+							<li><a href="#">Enock</a></li>
+							<li><a href="#">Alice</a></li>
+							<li><a href="#">Mastone</a></li>
+							<li><a href="#">Mike</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Get In Touch</h3>
+						<ul class="gtco-quick-contact">
+							<li><a href="#"><i class="icon-phone"></i> +254 713 111 882</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> orichcasper@gmail.com</a></li>
+							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+						<small class="block">Designed by <a href="http://GetTemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
+					</p>
+					<p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	<!-- </div> -->
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script src="{% static 'sacco/js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'sacco/js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'sacco/js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'sacco/js/jquery.waypoints.min.js' %}"></script>
+	<!-- Carousel -->
+	<script src="{% static 'sacco/js/owl.carousel.min.js' %}"></script>
+	<!-- countTo -->
+	<script src="{% static 'sacco/}js/jquery.countTo.js' %"></script>
+
+	<!-- Stellar Parallax -->
+	<script src="{% static 'sacco/js/jquery.stellar.min.js' %}"></script>
+
+	<!-- Magnific Popup -->
+	<script src="{% static 'sacco/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'sacco/js/magnific-popup-options.js' %}"></script>
+
+	<!-- Datepicker -->
+	<script src="{% static 'sacco/js/bootstrap-datepicker.min.js' %}"></script>
+
+
+	<!-- Main -->
+	<script src="{% static 'sacco/js/main.js' %}"></script>
+
+	</body>
+</html>
